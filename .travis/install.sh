@@ -7,9 +7,7 @@ do_install()
     set -e
 
     if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-        # workaround ugly warning on travis OSX,
-        # see https://github.com/direnv/direnv/issues/210
-        shell_session_update() { :; }
+        rvm get head # https://github.com/travis-ci/travis-ci/issues/6307
     fi
 
     if [[ $TRAVIS_OS_NAME == 'osx' && $PYTHON_INSTALLER == 'pyenv' ]]; then
