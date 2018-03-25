@@ -10,6 +10,9 @@ matrix:
       language: generic
       env: PYTHON_INSTALLER=pyenv TRAVIS_PYTHON_VERSION=3.6.4
 sudo: false
+
+before_install:
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
 install:
   - source .travis/install.sh
   - pip install nose

@@ -6,10 +6,6 @@ do_install()
 {
     set -e
 
-    if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-        rvm get head # https://github.com/travis-ci/travis-ci/issues/6307
-    fi
-
     if [[ $TRAVIS_OS_NAME == 'osx' && $PYTHON_INSTALLER == 'pyenv' ]]; then
         brew install pyenv-virtualenv
         pyenv versions
