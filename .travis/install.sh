@@ -5,6 +5,12 @@ do_install()
     set -e
     set -x
 
+    if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+        # workaround ugly warning on travis OSX,
+        # see https://github.com/direnv/direnv/issues/210
+        shell_session_update() { :; }
+    fi
+
     if [[ $TRAVIS_OS_NAME == 'osx' && $PYTHON_INSTALLER == 'pyenv' ]]; then
         brew install pyenv-virtualenv
         pyenv versions
