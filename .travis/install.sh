@@ -3,6 +3,7 @@
 do_install()
 {
     set -e
+    set -x
 
     if [[ $TRAVIS_OS_NAME == 'osx' && $PYTHON_INSTALLER == 'pyenv' ]]; then
         brew install pyenv-virtualenv
@@ -15,7 +16,7 @@ do_install()
 
     elif [[ $TRAVIS_OS_NAME == 'osx' && $PYTHON_INSTALLER == 'brew' ]]; then
         brew list
-        brew install python3
+        brew upgrade python3
         # nose 1.3.7 creates /usr/local/man dir if it does not exist.
         # The operation fails because current user does not own /usr/local.  Create the dir manually instead.
         sudo mkdir /usr/local/man
@@ -25,6 +26,8 @@ do_install()
 #        mkdir -p ~/Library/Python/2.7/lib/python/site-packages
 #        echo "$(brew --prefix)/lib/python2.7/site-packages" >> ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth
     fi
+
+    set +x
 }
 
 do_install
