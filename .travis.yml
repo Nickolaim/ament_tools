@@ -3,16 +3,14 @@ matrix:
   include:
     - os: linux
       python: 3.5
+      sudo: false
     - os: osx
       language: generic
       env: PYTHON_INSTALLER=brew
     - os: osx
       language: generic
       env: PYTHON_INSTALLER=pyenv TRAVIS_PYTHON_VERSION=3.6.4
-sudo: false
 
-before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvmsudo rvm get stable; fi
 install:
   - source .travis/install.sh
   - pip install nose
