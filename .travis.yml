@@ -1,9 +1,17 @@
 language: python
-python:
-#  - "2.7"
-  - "3.5"
+matrix:
+  include:
+    - os: linux
+      python: 3.5
+    - os: osx
+      language: generic
+      env: PYTHON_INSTALLER=brew
+    - os: osx
+      language: generic
+      env: PYTHON_INSTALLER=pyenv TRAVIS_PYTHON_VERSION=3.6.4
 sudo: false
 install:
+  - source .travis/install.sh
   - pip install nose
   - pip install flake8 pydocstyle
 # For now install ament_package from git
