@@ -12,7 +12,7 @@ matrix:
 sudo: false
 
 before_install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get head; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then rvm get stable; fi
 install:
   - source .travis/install.sh
   - pip install nose
