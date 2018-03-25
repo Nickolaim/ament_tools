@@ -14,7 +14,7 @@ matrix:
 install:
   - source .travis/install.sh
   - pip install nose
-  - pip install flake8 pydocstyle
+  - pip install flake8 pydocstyle codecov
 # For now install ament_package from git
   - git clone https://github.com/ament/ament_package.git
   - cd ament_package
@@ -37,6 +37,6 @@ install:
   - python setup.py install
   - cd ../..
 script:
-  - python setup.py nosetests -s
+  - python setup.py nosetests -s --with-coverage
 notifications:
   email: false
