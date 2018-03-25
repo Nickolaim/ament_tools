@@ -32,8 +32,6 @@ do_install()
 #        mkdir -p ~/Library/Python/2.7/lib/python/site-packages
 #        echo "$(brew --prefix)/lib/python2.7/site-packages" >> ~/Library/Python/2.7/lib/python/site-packages/homebrew.pth
     fi
-
-    set +x
 }
 
 do_install
