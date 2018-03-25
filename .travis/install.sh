@@ -1,9 +1,10 @@
 #!/bin/bash
 
+set -x
+
 do_install()
 {
     set -e
-    set -x
 
     if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
         # workaround ugly warning on travis OSX,
