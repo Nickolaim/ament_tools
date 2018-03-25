@@ -14,6 +14,8 @@ do_install()
         pyenv activate $PYTHON_ENV_NAME
 
     elif [[ $TRAVIS_OS_NAME == 'osx' && $PYTHON_INSTALLER == 'brew' ]]; then
+        brew list
+        brew install python3
         # nose 1.3.7 creates /usr/local/man dir if it does not exist.
         # The operation fails because current user does not own /usr/local.  Create the dir manually instead.
         sudo mkdir /usr/local/man
