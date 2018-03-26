@@ -37,6 +37,8 @@ install:
   - python setup.py install
   - cd ../..
 script:
-  - python setup.py nosetests -s --with-coverage
+  - python setup.py nosetests -s --with-coverage --cover-package=ament_tools
+after_script:
+  - codecov
 notifications:
   email: false
