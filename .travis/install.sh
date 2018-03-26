@@ -20,8 +20,9 @@ do_install()
         brew upgrade python3
         # nose 1.3.7 creates /usr/local/man dir if it does not exist.
         # The operation fails because current user does not own /usr/local.  Create the dir manually instead.
-        # sudo mkdir /usr/local/man
-        # sudo chown -R $(whoami) $(brew --prefix)/*
+        # More at https://github.com/nose-devs/nose/issues/1017
+        sudo mkdir /usr/local/man
+        sudo chown -R $(whoami) $(brew --prefix)/*
 
         export PATH=$(pwd)/.travis/shim:$PATH
     fi
