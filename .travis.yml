@@ -1,11 +1,20 @@
 language: python
-python:
-#  - "2.7"
-  - "3.5"
 sudo: false
+matrix:
+  include:
+    - os: linux
+      python: 3.5
+    - os: osx
+      language: generic
+      env: PYTHON_INSTALLER=brew
+    - os: osx
+      language: generic
+      env: PYTHON_INSTALLER=pyenv TRAVIS_PYTHON_VERSION=3.6.4
+
 install:
+  - source .travis/install.sh
   - pip install nose
-  - pip install flake8 pydocstyle
+  - pip install flake8 pydocstyle codecov
 # For now install ament_package from git
   - git clone https://github.com/ament/ament_package.git
   - cd ament_package
@@ -28,6 +37,8 @@ install:
   - python setup.py install
   - cd ../..
 script:
-  - python setup.py nosetests -s
+  - python setup.py nosetests -s --with-coverage --cover-package=ament_tools
+after_script:
+  - codecov
 notifications:
   email: false
